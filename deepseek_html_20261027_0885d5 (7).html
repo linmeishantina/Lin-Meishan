@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>林美杉 · LIN Meishan | CV Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blue-dark: #1e3a5f;
+      --blue-mid: #2a5a8c;
+      --blue-light: #e7f0fa;
+      --green-dark: #1e6b4a;
+      --green-mid: #2d8f62;
+      --green-light: #e3f5ec;
+      --white: #ffffff;
+      --off-white: #f7fafc;
+      --gray-text: #4a5a6e;
+      --shadow-sm: 0 4px 14px rgba(30, 58, 95, 0.06);
+      --shadow-md: 0 8px 28px rgba(30, 58, 95, 0.08);
+      --shadow-lg: 0 16px 40px rgba(30, 58, 95, 0.10);
+      --radius-card: 24px;
+      --radius-pill: 50px;
+      --transition: 0.25s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(160deg, #f0f7ff 0%, #f7fafc 40%, #ecf7f0 100%);
+      color: var(--blue-dark);
+      line-height: 1.65;
+      min-height: 100vh;
+      padding: 1.5rem 1rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-wrapper {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2.8rem;
+    }
+
+    .section-inner { width: 100%; max-width: 1000px; }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 1.8rem;
+      color: var(--blue-dark);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue-mid), var(--green-mid));
+      border-radius: 4px;
+    }
+
+    /* Language Toggle */
+    .lang-toggle-fixed {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.2rem;
+      z-index: 100;
+      display: flex;
+      gap: 0.4rem;
+      background: var(--white);
+      padding: 0.35rem 0.5rem;
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(42, 90, 140, 0.12);
+    }
+
+    .lang-toggle-fixed button {
+      border: none;
+      background: transparent;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      color: var(--gray-text);
+      transition: all var(--transition);
+    }
+
+    .lang-toggle-fixed button.active {
+      background: linear-gradient(135deg, var(--blue-mid), var(--green-mid));
+      color: var(--white);
+      box-shadow: 0 2px 8px rgba(42, 90, 140, 0.3);
+    }
+
+    .lang-toggle-fixed button:not(.active):hover {
+      background: var(--blue-light);
+      color: var(--blue-dark);
+    }
+
+    /* HERO */
+    .hero { margin-top: 1.5rem; }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(42, 90, 140, 0.06);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      transition: box-shadow var(--transition);
+    }
+
+    .hero-card:hover { box-shadow: var(--shadow-lg); }
+
+    .avatar-circle {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-mid), var(--green-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 8px 20px rgba(42, 90, 140, 0.25);
+    }
+
+    .hero-name {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--blue-dark);
+      line-height: 1.2;
+    }
+
+    .hero-name span {
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: var(--green-dark);
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--gray-text);
+      max-width: 600px;
+    }
+
+    .hero-interpreter {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--blue-light), var(--green-light));
+      color: var(--blue-dark);
+      padding: 0.45rem 1.2rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 1px solid rgba(42, 90, 140, 0.12);
+    }
+
+    .hero-interpreter i { color: var(--green-mid); font-size: 1rem; }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-top: 0.6rem;
+    }
+
+    .tag-pill {
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      padding: 0.3rem 1rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid rgba(42, 90, 140, 0.1);
+      transition: background var(--transition);
+    }
+
+    .tag-pill.green {
+      background: var(--green-light);
+      color: var(--green-dark);
+      border-color: rgba(45, 143, 98, 0.15);
+    }
+
+    /* ABOUT */
+    .about-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 2.2rem 2.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(42, 90, 140, 0.06);
+      width: 100%;
+      text-align: center;
+    }
+
+    .about-card p {
+      color: var(--gray-text);
+      font-size: 1.02rem;
+      max-width: 800px;
+      margin: 0 auto 0.8rem;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .about-card p:last-child { margin-bottom: 0; }
+
+    /* EDUCATION */
+    .edu-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      width: 100%;
+    }
+
+    .edu-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 1.6rem 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(42, 90, 140, 0.06);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 0.8rem 1.8rem;
+      text-align: left;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .edu-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+    .edu-icon {
+      flex: 0 0 44px;
+      height: 44px;
+      background: var(--blue-light);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--blue-mid);
+    }
+
+    .edu-content { flex: 1 1 240px; }
+
+    .edu-institution {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--blue-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-degree {
+      font-weight: 500;
+      color: var(--green-dark);
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-detail { font-size: 0.9rem; color: var(--gray-text); }
+
+    .edu-date {
+      flex: 0 0 auto;
+      background: var(--green-light);
+      color: var(--green-dark);
+      padding: 0.25rem 1rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* SKILLS */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .skill-group {
+      flex: 1 1 260px;
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 1.8rem 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(42, 90, 140, 0.06);
+      text-align: center;
+      transition: box-shadow var(--transition);
+    }
+
+    .skill-group:hover { box-shadow: var(--shadow-md); }
+
+    .skill-group h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      color: var(--blue-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .skill-group h3 i { color: var(--green-mid); }
+
+    .skill-list { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+
+    .skill-badge {
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      padding: 0.35rem 1rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 500;
+      border: 1px solid rgba(42, 90, 140, 0.08);
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .skill-badge.green {
+      background: var(--green-light);
+      color: var(--green-dark);
+      border-color: rgba(45, 143, 98, 0.12);
+    }
+
+    .skill-badge:hover { background: var(--blue-mid); color: var(--white); }
+    .skill-badge.green:hover { background: var(--green-mid); color: var(--white); }
+
+    /* PORTFOLIO */
+    .portfolio-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      width: 100%;
+    }
+
+    .portfolio-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 1.6rem 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(42, 90, 140, 0.06);
+      text-align: left;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 0.8rem 1.8rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .portfolio-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+    .portfolio-icon {
+      flex: 0 0 44px;
+      height: 44px;
+      background: var(--green-light);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--green-mid);
+    }
+
+    .portfolio-content { flex: 1 1 240px; }
+
+    .portfolio-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--blue-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .portfolio-desc { font-size: 0.92rem; color: var(--gray-text); margin-bottom: 0.2rem; }
+
+    .portfolio-meta { font-size: 0.82rem; color: var(--green-dark); font-weight: 500; }
+
+    .portfolio-badge {
+      flex: 0 0 auto;
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      padding: 0.2rem 0.9rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* CV DOWNLOAD */
+    .cv-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(42, 90, 140, 0.06);
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .cv-card i {
+      font-size: 2.8rem;
+      color: var(--blue-mid);
+      background: var(--blue-light);
+      padding: 1.2rem;
+      border-radius: 50%;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, var(--blue-mid), var(--green-mid));
+      color: var(--white);
+      border: none;
+      padding: 0.85rem 2.4rem;
+      border-radius: var(--radius-pill);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+      box-shadow: 0 6px 18px rgba(42, 90, 140, 0.25);
+    }
+
+    .btn-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(42, 90, 140, 0.35);
+    }
+
+    .btn-download:active { transform: scale(0.98); }
+
+    .cv-note { font-size: 0.88rem; color: var(--gray-text); }
+
+    /* CONTACT */
+    .contact-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 2.2rem 2.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(42, 90, 140, 0.06);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.4rem;
+    }
+
+    .contact-links { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--off-white);
+      padding: 0.7rem 1.4rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.95rem;
+      color: var(--blue-dark);
+      border: 1px solid rgba(42, 90, 140, 0.06);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .contact-item:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+    .contact-item i { color: var(--green-mid); font-size: 1.1rem; }
+
+    .contact-item a { color: inherit; text-decoration: none; }
+    .contact-item a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 1.5rem 0 0.5rem;
+      color: var(--gray-text);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(42, 90, 140, 0.08);
+      margin-top: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 680px) {
+      .hero-card { padding: 2rem 1.5rem; }
+      .hero-name { font-size: 1.7rem; }
+      .hero-name span { font-size: 0.95rem; }
+      .about-card, .cv-card, .contact-card { padding: 1.8rem 1.2rem; }
+      .edu-card, .portfolio-card { padding: 1.3rem 1.2rem; }
+      .section-title { font-size: 1.6rem; }
+      .lang-toggle-fixed { top: 0.8rem; right: 0.8rem; }
+      .skill-group { padding: 1.4rem 1rem; }
+      .btn-download { padding: 0.75rem 1.8rem; font-size: 0.92rem; }
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 0.8rem 0.5rem 2rem; }
+      .avatar-circle { width: 88px; height: 88px; font-size: 2.2rem; }
+      .hero-name { font-size: 1.45rem; }
+      .contact-item { padding: 0.6rem 1rem; font-size: 0.85rem; }
+      .edu-date { font-size: 0.72rem; padding: 0.2rem 0.7rem; }
+      .portfolio-badge { font-size: 0.7rem; padding: 0.15rem 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fixed Language Toggle -->
+  <div class="lang-toggle-fixed">
+    <button id="lang-en" class="active" aria-label="English">EN</button>
+    <button id="lang-zh" aria-label="中文">中文</button>
+  </div>
+
+  <div class="page-wrapper">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="section-inner">
+        <div class="hero-card">
+          <div class="avatar-circle">LM</div>
+          <div class="hero-name">
+            LIN Meishan
+            <span data-i18n="hero_name_zh">林美杉</span>
+          </div>
+          <p class="hero-tagline" data-i18n="hero_tagline">
+            Bilingual communicator · Translator · Literary researcher
+          </p>
+          <div class="hero-interpreter">
+            <i class="fas fa-headset"></i>
+            <span data-i18n="hero_interpreter">Interpreter</span>
+          </div>
+          <div class="hero-tags">
+            <span class="tag-pill" data-i18n="hero_tag1">Translation</span>
+            <span class="tag-pill green" data-i18n="hero_tag2">Literature</span>
+            <span class="tag-pill" data-i18n="hero_tag3">Intercultural Communication</span>
+            <span class="tag-pill green" data-i18n="hero_tag4">Language Technology</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <div class="section-inner">
+        <h2 class="section-title" data-i18n="about_title">About</h2>
+        <div class="about-card">
+          <p data-i18n="about_p1">
+            I am a bilingual professional with a strong background in Chinese and English literary studies, translation, and intercultural communication. My academic journey spans The Hong Kong Polytechnic University and The Chinese University of Hong Kong, where I developed a deep appreciation for the power of language to bridge cultures.
+          </p>
+          <p data-i18n="about_p2">
+            Beyond academia, I have gained practical experience through internships in publishing and education, and I have a passion for creating meaningful content that resonates across languages. I am currently pursuing further studies in Translation and Language Technology to combine my love for language with cutting-edge tools.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section id="education">
+      <div class="section-inner">
+        <h2 class="section-title" data-i18n="edu_title">Education</h2>
+        <div class="edu-grid">
+          <div class="edu-card">
+            <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="edu-content">
+              <div class="edu-institution" data-i18n="edu1_inst">The Hong Kong Polytechnic University</div>
+              <div class="edu-degree" data-i18n="edu1_degree">BA in Chinese and Bilingual Studies</div>
+              <div class="edu-detail" data-i18n="edu1_detail">Minor: European Studies · Second Class Honors, Division 1</div>
+              <div class="edu-detail" data-i18n="edu1_gpa">GPA: 3.31 / 4.3 (Major), 3.55 / 4.3 (Minor)</div>
+            </div>
+            <div class="edu-date">2019 – 2023</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-icon"><i class="fas fa-book-open"></i></div>
+            <div class="edu-content">
+              <div class="edu-institution" data-i18n="edu2_inst">The Chinese University of Hong Kong</div>
+              <div class="edu-degree" data-i18n="edu2_degree">MA in English Literary Studies</div>
+              <div class="edu-detail" data-i18n="edu2_detail">Focus: Comparative literature, Gothic studies, contemporary poetry</div>
+              <div class="edu-detail" data-i18n="edu2_gpa">GPA: 3.425 / 4.0</div>
+            </div>
+            <div class="edu-date">2023 – 2024</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-icon"><i class="fas fa-language"></i></div>
+            <div class="edu-content">
+              <div class="edu-institution" data-i18n="edu3_inst">The Hong Kong Polytechnic University</div>
+              <div class="edu-degree" data-i18n="edu3_degree">MA in Translation and Language Technology</div>
+              <div class="edu-detail" data-i18n="edu3_detail">Courses: Advanced interpreting, AI literacy, integrated language technology</div>
+            </div>
+            <div class="edu-date">2026 – 2027</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills">
+      <div class="section-inner">
+        <h2 class="section-title" data-i18n="skills_title">Skills</h2>
+        <div class="skills-container">
+          <div class="skill-group">
+            <h3><i class="fas fa-globe"></i> <span data-i18n="skill_lang_title">Languages</span></h3>
+            <div class="skill-list">
+              <span class="skill-badge" data-i18n="skill_lang1">English (Proficient)</span>
+              <span class="skill-badge green" data-i18n="skill_lang2">Mandarin (Native, Level 2-A)</span>
+              <span class="skill-badge" data-i18n="skill_lang3">Cantonese (Fluent)</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3><i class="fas fa-pen-fancy"></i> <span data-i18n="skill_trans_title">Translation &amp; Academic</span></h3>
+            <div class="skill-list">
+              <span class="skill-badge green" data-i18n="skill_trans1">Consecutive Interpreting</span>
+              <span class="skill-badge" data-i18n="skill_trans2">Literary Translation</span>
+              <span class="skill-badge green" data-i18n="skill_trans3">Comparative Literature</span>
+              <span class="skill-badge" data-i18n="skill_trans4">Academic Writing</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3><i class="fas fa-laptop-code"></i> <span data-i18n="skill_tools_title">Tools &amp; Technology</span></h3>
+            <div class="skill-list">
+              <span class="skill-badge" data-i18n="skill_tool1">MS Office</span>
+              <span class="skill-badge green" data-i18n="skill_tool2">CAT Tools (basic)</span>
+              <span class="skill-badge" data-i18n="skill_tool3">PowerPoint Design</span>
+              <span class="skill-badge green" data-i18n="skill_tool4">AI Literacy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PORTFOLIO ===== -->
+    <section id="portfolio">
+      <div class="section-inner">
+        <h2 class="section-title" data-i18n="portfolio_title">Portfolio · Articles &amp; Essays</h2>
+        <div class="portfolio-grid">
+          <div class="portfolio-card">
+            <div class="portfolio-icon"><i class="fas fa-file-alt"></i></div>
+            <div class="portfolio-content">
+              <div class="portfolio-title" data-i18n="port1_title">A Comparative Study of Culture-loaded Words in Two English Translations of Hong Lou Meng</div>
+              <div class="portfolio-desc" data-i18n="port1_desc">Course essay (A+) · Descriptive Translation Studies perspective</div>
+              <div class="portfolio-meta" data-i18n="port1_meta">2023 · PolyU</div>
+            </div>
+            <div class="portfolio-badge">A+</div>
+          </div>
+          <div class="portfolio-card">
+            <div class="portfolio-icon"><i class="fas fa-book"></i></div>
+            <div class="portfolio-content">
+              <div class="portfolio-title" data-i18n="port2_title">Manipulation and Isolation in Gothic Literature: The Vampyre and 'Christabel'</div>
+              <div class="portfolio-desc" data-i18n="port2_desc">Comparative study on Gothic motifs and narrative control</div>
+              <div class="portfolio-meta" data-i18n="port2_meta">2024 · CUHK</div>
+            </div>
+            <div class="portfolio-badge">A-</div>
+          </div>
+          <div class="portfolio-card">
+            <div class="portfolio-icon"><i class="fas fa-microphone-alt"></i></div>
+            <div class="portfolio-content">
+              <div class="portfolio-title" data-i18n="port3_title">Love as Poison: Madeline's Unspeakable Trauma in 'The Eve of St. Agnes'</div>
+              <div class="portfolio-desc" data-i18n="port3_desc">5th "MEMORY, TRAUMA AND RECOVERY" International Interdisciplinary Conference</div>
+              <div class="portfolio-meta" data-i18n="port3_meta">2024 · Conference presentation</div>
+            </div>
+            <div class="portfolio-badge" data-i18n="port3_badge">Conference</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CV DOWNLOAD ===== -->
+    <section id="cv">
+      <div class="section-inner">
+        <h2 class="section-title" data-i18n="cv_title">CV Download</h2>
+        <div class="cv-card">
+          <i class="fas fa-file-pdf"></i>
+          <p data-i18n="cv_desc">Download my full CV in PDF format.</p>
+          <!-- ✅ 相对路径：HTML 同目录下的 pdf 文件夹中的 LIN Meishan CV.pdf -->
+          <a href="pdf/LIN%20Meishan%20CV.pdf"
+             download="LIN Meishan CV.pdf"
+             class="btn-download">
+            <i class="fas fa-download"></i>
+            <span data-i18n="cv_btn">Download CV</span>
+          </a>
+          <p class="cv-note" data-i18n="cv_note">File: pdf/LIN Meishan CV.pdf</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <div class="section-inner">
+        <h2 class="section-title" data-i18n="contact_title">Contact</h2>
+        <div class="contact-card">
+          <div class="contact-links">
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:meishan.lin@example.com">meishan.lin@example.com</a>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone-alt"></i>
+              <span>+852 1234 5678</span>
+            </div>
+            <div class="contact-item">
+              <i class="fab fa-linkedin"></i>
+              <a href="#" target="_blank">LinkedIn Profile</a>
+            </div>
+          </div>
+          <p style="font-size:0.9rem; color:var(--gray-text);" data-i18n="contact_note">
+            Feel free to reach out for collaboration, translation projects, or academic discussions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 LIN Meishan · <span data-i18n="footer_rights">All rights reserved.</span></p>
+    </footer>
+
+  </div>
+
+  <script>
+    (function() {
+      const translations = {
+        en: {
+          hero_name_zh: "林美杉",
+          hero_tagline: "Bilingual communicator · Translator · Literary researcher",
+          hero_interpreter: "Interpreter",
+          hero_tag1: "Translation",
+          hero_tag2: "Literature",
+          hero_tag3: "Intercultural Communication",
+          hero_tag4: "Language Technology",
+          about_title: "About",
+          about_p1: "I am a bilingual professional with a strong background in Chinese and English literary studies, translation, and intercultural communication. My academic journey spans The Hong Kong Polytechnic University and The Chinese University of Hong Kong, where I developed a deep appreciation for the power of language to bridge cultures.",
+          about_p2: "Beyond academia, I have gained practical experience through internships in publishing and education, and I have a passion for creating meaningful content that resonates across languages. I am currently pursuing further studies in Translation and Language Technology to combine my love for language with cutting-edge tools.",
+          edu_title: "Education",
+          edu1_inst: "The Hong Kong Polytechnic University",
+          edu1_degree: "BA in Chinese and Bilingual Studies",
+          edu1_detail: "Minor: European Studies · Second Class Honors, Division 1",
+          edu1_gpa: "GPA: 3.31 / 4.3 (Major), 3.55 / 4.3 (Minor)",
+          edu2_inst: "The Chinese University of Hong Kong",
+          edu2_degree: "MA in English Literary Studies",
+          edu2_detail: "Focus: Comparative literature, Gothic studies, contemporary poetry",
+          edu2_gpa: "GPA: 3.425 / 4.0",
+          edu3_inst: "The Hong Kong Polytechnic University",
+          edu3_degree: "MA in Translation and Language Technology",
+          edu3_detail: "Courses: Advanced interpreting, AI literacy, integrated language technology",
+          skills_title: "Skills",
+          skill_lang_title: "Languages",
+          skill_lang1: "English (Proficient)",
+          skill_lang2: "Mandarin (Native, Level 2-A)",
+          skill_lang3: "Cantonese (Fluent)",
+          skill_trans_title: "Translation & Academic",
+          skill_trans1: "Consecutive Interpreting",
+          skill_trans2: "Literary Translation",
+          skill_trans3: "Comparative Literature",
+          skill_trans4: "Academic Writing",
+          skill_tools_title: "Tools & Technology",
+          skill_tool1: "MS Office",
+          skill_tool2: "CAT Tools (basic)",
+          skill_tool3: "PowerPoint Design",
+          skill_tool4: "AI Literacy",
+          portfolio_title: "Portfolio · Articles & Essays",
+          port1_title: "A Comparative Study of Culture-loaded Words in Two English Translations of Hong Lou Meng",
+          port1_desc: "Course essay (A+) · Descriptive Translation Studies perspective",
+          port1_meta: "2023 · PolyU",
+          port2_title: "Manipulation and Isolation in Gothic Literature: The Vampyre and 'Christabel'",
+          port2_desc: "Comparative study on Gothic motifs and narrative control",
+          port2_meta: "2024 · CUHK",
+          port3_title: "Love as Poison: Madeline's Unspeakable Trauma in 'The Eve of St. Agnes'",
+          port3_desc: "5th \"MEMORY, TRAUMA AND RECOVERY\" International Interdisciplinary Conference",
+          port3_meta: "2024 · Conference presentation",
+          port3_badge: "Conference",
+          cv_title: "CV Download",
+          cv_desc: "Download my full CV in PDF format.",
+          cv_btn: "Download CV",
+          cv_note: "File: pdf/LIN Meishan CV.pdf",
+          contact_title: "Contact",
+          contact_note: "Feel free to reach out for collaboration, translation projects, or academic discussions.",
+          footer_rights: "All rights reserved."
+        },
+        zh: {
+          hero_name_zh: "林美杉",
+          hero_tagline: "双语沟通者 · 译者 · 
